@@ -13,8 +13,16 @@ class Users(BaseModel):
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000" # Defini le serveur de developpement comme l'origine des requetes API
+    "http://localhost:5173" # Defini le serveur de developpement comme l'origine des requetes API
 ]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 db = {"users": []}
 
