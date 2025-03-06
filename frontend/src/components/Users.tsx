@@ -30,6 +30,16 @@ function UserList() {
         }
     }
 
+    async function checkUser(username: string, password: string) {
+        fetchUsers();
+        for (const user of users) {
+            if (username == user.username && password == user.password) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // React Hook appellé on mount pour recuperer les utilisateurs depuis l'API
     useEffect(() => {
         fetchUsers();
@@ -41,7 +51,7 @@ function UserList() {
             <ul>
                 {users.map((user, index) => (<li key={index}>{user.username}</li>))}
             </ul>
-            <CreateAcountForm addUser={addUser} />
+            <CreateAcountForm addUser={addUser} checkUser={checkUser} />
         </div>
     );
 }

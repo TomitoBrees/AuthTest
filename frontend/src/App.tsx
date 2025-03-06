@@ -1,17 +1,18 @@
-import UserList from "./components/Users.tsx";
+import { Routes, Route } from "react-router-dom";
+import {UserProvider} from "./UserContext.tsx";
+import CreateAcountForm from "./components/CreateAcountForm.tsx";
+import Connected from "./components/Connected.tsx";
 import './App.css'
 
 function App() {
 
   return (
-      <div className="App">
-          <header className="App-header">
-              <h1>User Management App</h1>
-          </header>
-          <main>
-              <UserList />
-          </main>
-      </div>
+      <UserProvider>
+        <Routes>
+            <Route path="/"element={<CreateAcountForm />} />
+            <Route path="/connected/:username" element={<Connected />}/>
+        </Routes>
+      </UserProvider>
   );
 }
 
