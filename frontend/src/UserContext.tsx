@@ -1,22 +1,17 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext } from "react";
 import api from "./api.ts";
 
-type User = {
-    username: string;
-    password: string;
-}
-
 type UserContextType = {
-    users: User[];
     addUser: (username: string, password: string) => Promise<boolean>;
     checkUser: (username: string, password: string) => Promise<boolean>;
 }
 
+
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export function UserProvider({children}: {children: React.ReactNode}) {
-    const [users, setUsers] = useState<User[]>([]);
 
+    /*
     // React Hook appellé on mount pour recuperer les utilisateurs depuis l'API
     useEffect(() => {
         fetchUsers();
@@ -31,26 +26,33 @@ export function UserProvider({children}: {children: React.ReactNode}) {
             console.error("Error fetching users", error);
         }
     }
+     */
 
     // Appelle le POST endpoint de l'API pour ajouter un utilisateur
     async function addUser(username: string, password: string) {
         try {
-            await api.post("/users", {username: username, password: password});
-            fetchUsers();
-            return true;
+            const success = await api.post("/users", {username: username, password: password});
+            return success.data.success;
         } catch (error) {
-            console.error("Error while adding fruit", error);
+            console.error("Error while adding user", error);
             return false;
         }
     }
 
+    // Verifie si l'utilisateur est present dans la database
     async function checkUser(username: string, password: string) {
-        fetchUsers();
-        return users.some(user => user.username == username && user.password == password)
+        try {
+            const success = await api.post("/check-user", {username: username, password: password});
+            console.log(success);
+            return success.data.success;
+        } catch (error) {
+            console.error("Error while adding user", error);
+            return false;
+        }
     }
 
     return (
-        <UserContext.Provider value={{users, addUser, checkUser}} >
+        <UserContext.Provider value={{addUser, checkUser}} >
             {children}
         </UserContext.Provider>
     );
@@ -62,5 +64,5 @@ export function useUser() {
         console.error("No user provider");
         throw new Error("No user provider");
     }
-    return context;
+    return context  ;
 }
