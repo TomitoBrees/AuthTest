@@ -2,3 +2,5 @@ fastapi
 uvicorn
 pydantic
 bcrypt
+sqlalchemy
+psycopg2-binary
