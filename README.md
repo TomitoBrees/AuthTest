@@ -6,10 +6,7 @@ Il s'agit d'une application web simple qui simule l'authentification des utilisa
 
 Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur votre machine :
 
-- **Python 3.x**
-- **Node.js** (pour les dépendances du frontend)
-- **Yarn** (pour la gestion des packages du frontend)
-- **PostgreSQL**
+- **Docker**
 
 ## Installation
 
@@ -22,56 +19,21 @@ git clone <url-du-répertoire>
 cd DRMTest
 ```
 
-### 2. Configurer le Backend
+### 2. Lancer l'Application
 
-Accédez au dossier `backend` et installez les packages Python requis :
+Le `backend`, le `frontend` ansi que la `database` peuvent être lancés directement grace a **Docker**.
 
-```bash
-cd backend
-pip install -r requirements.txt
-```
-
-Puis, pour configurer la base de donnée:
-1. **Démarrer PostgreSQL** : Assurez-vous que PostgreSQL est en cours d'exécution sur votre machine.
-2. **Créer une Base de Données** : Créez une nouvelle base de données nommée `DRMAuth` dans PostgreSQL.
-3. **Mettre à Jour la Configuration de la Base de Données** : Ouvrez le fichier `database.py` dans le répertoire backend et mettez à jour les variables suivantes avec vos identifiants PostgreSQL :
-    
-   ```python
-    USER = "postgres"
-    PASSWORD = "1234"
-    DATABASE_NAME = "DRMAuth"
-    ```
-   
-### 3. Configurer le Frontend
-
-Accédez au dossier `frontend` et installez les packages Node.js requis en utilisant Yarn:
+Depuis la racine, il suffit de faire cette commande :
 
 ```bash
-cd ../frontend
-yarn install
-```
-
-### 4. Lancer l'Application
-
-Dans le dossier `backend`, démarrez le serveur Python :
-
-```bash
-cd ../backend
-python main.py
-```
-
-Dans le dossier `frontend`, démarrez le serveur de développement Vite :
-
-```bash
-cd ../frontend
-yarn dev
+docker-compose up --build
 ```
 
 ### 5. Accéder à l'Application
 
 Une fois que les serveurs `backend` et `frontend` sont en cours d'exécution, vous pouvez accéder à l'application en naviguant vers `http://localhost:5173` dans votre navigateur web.
 
-Vous pouvez également faire des requête API à l'addresse suivante: `http://localhost:8000/`
+Vous pouvez également faire des requêtes API à l'adresse suivante: `http://localhost:8000/`
 
 ## Endpoints API
 
@@ -139,7 +101,6 @@ Vous pouvez également faire des requête API à l'addresse suivante: `http://lo
 - **Technologie** : Le frontend est construit en React avec Tailwind CSS pour le style.
 - **Fichiers Principaux** :
   - `src/` : Contient les composants React et la logique du frontend.
-  - `public/` : Contient les fichiers statiques comme `index.html`.
   - `vite.config.ts` : Configuration de Vite pour le développement.
 
 ### Base de Données
