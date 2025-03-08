@@ -22,8 +22,6 @@ function CreateAcountForm() {
             } else {
                 alert("Utilisateur existant");
             }
-            setUsername("");
-            setPassword("");
         }
     }
 
@@ -39,8 +37,6 @@ function CreateAcountForm() {
             else {
                 alert("Pas de compte correspondant");
             }
-            setUsername("");
-            setPassword("");
         }
     }
 
@@ -61,7 +57,7 @@ function CreateAcountForm() {
                         <input type="input"
                                value={username}
                                onChange={(e) => setUsername(e.target.value)}
-                               placeholder="Username"
+                               placeholder="Pseudo"
                                className="text-black"/>
                     </label>
 
@@ -77,7 +73,7 @@ function CreateAcountForm() {
                         <input type="password"
                                value={password}
                                onChange={(e) => setPassword(e.target.value)}
-                               placeholder="Password"
+                               placeholder="Mot de Passe"
                                className="text-black"/>
                     </label>
 
