@@ -111,3 +111,5 @@ Vous pouvez également faire des requêtes API à l'adresse suivante: `http://lo
 ### Dépendances
 - **Backend** : Les dépendances Python sont listées dans `requirements.txt`.
 - **Frontend** : Les dépendances Node.js sont gérées par Yarn et listées dans `package.json`.
+
+Readme écris avec l'aide de l'IA générative.
