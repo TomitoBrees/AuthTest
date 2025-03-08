@@ -7,6 +7,7 @@ Il s'agit d'une application web simple qui simule l'authentification des utilisa
 Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur votre machine :
 
 - **Docker**
+- **docker-compose**
 
 ## Installation
 
