@@ -1,4 +1,4 @@
-# Application Web DRMTest
+# Application Web AuthTest
 
 Il s'agit d'une application web simple qui simule l'authentification des utilisateurs. Elle est composée d'un backend en Python et d'un frontend en React. L'application utilise une base de données PostgreSQL pour stocker les données des utilisateurs.
 
