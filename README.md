@@ -16,7 +16,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur 
 Commencez par cloner le répertoire sur votre machine locale :
 
 ```bash
-git clone https://github.com/TomitoBrees/DRMTest.git
+git clone https://github.com/TomitoBrees/AuthTest.git
 cd DRMTest
 ```
 
